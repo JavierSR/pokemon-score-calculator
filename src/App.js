@@ -30,7 +30,7 @@ const calcularPuntajePokemon = (naturaleza, habilidad, ivsTotales, ivsPrincipale
 
   const puntajeIVs = (pesoIVsTotales * proporcionIVsTotales) + (pesoIVsPrincipales * proporcionIVsPrincipales);
 
-  const puntajeTotal = puntajeNaturaleza * (puntajeHabilidad / 15) * puntajeIVs;
+  const puntajeTotal = puntajeNaturaleza * (puntajeHabilidad / 10) * puntajeIVs;
 
   return Math.min(Math.round(puntajeTotal), 100);
 };
