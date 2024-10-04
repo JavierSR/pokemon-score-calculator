@@ -1,0 +1,118 @@
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+  padding: 20px;
+}
+
+h1 {
+  color: #ffcb05;
+  text-align: center;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px #2a75bb;
+  margin-bottom: 5px;
+}
+
+h6 {
+  text-align: center;
+  font-size: 5px;
+  margin-bottom: 5px;
+}
+
+/* Estilos del formulario */
+.form-container {
+  background-color: #ffffff;
+  border: 2px solid #2a75bb;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;;
+}
+
+.form-container input,
+.form-container select,
+.form-container button {
+  display: block;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 2px solid #2a75bb;
+  font-size: 1rem;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container button:focus {
+  outline: none;
+  border-color: #ffcb05;
+}
+
+/* Botón de calcular y agregar */
+button {
+  background-color: #ffcb05;
+  color: #2a75bb;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+button:hover {
+  background-color: #f5a623;
+}
+
+/* Buscador */
+input[type="text"] {
+  margin-bottom: 20px;
+  border: 2px solid #2a75bb;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Estilos de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table thead th {
+  background-color: #2a75bb;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+table tbody td {
+  border: 1px solid #2a75bb;
+  padding: 10px;
+  text-align: center;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f7f9fc;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Botón de eliminar en la tabla */
+button.eliminar {
+  background-color: #d9534f;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.eliminar:hover {
+  background-color: #c9302c;
+}
