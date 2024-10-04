@@ -52,7 +52,7 @@ const obtenerClaseTier = (ivs) => {
 }
 
 const obtenerClasePuntaje = (score) => {
-  if (score >= 80) {
+  if (score >= 85) {
     return 'epic-score'
   }
 
