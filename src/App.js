@@ -5,7 +5,7 @@ import './App.css';  // Importa el archivo de estilos
 const calcularPuntajePokemon = (naturaleza, habilidad, ivsTotales, ivsPrincipales) => {
   const naturalezaPuntajes = {
     ideal: 100,
-    buena: 80,
+    buena: 85,
     neutra: 50,
     perjudicial: 20,
   };
@@ -17,7 +17,7 @@ const calcularPuntajePokemon = (naturaleza, habilidad, ivsTotales, ivsPrincipale
   };
 
   const pesoIVsTotales = 0.35;
-  const pesoIVsPrincipales = 0.65;W
+  const pesoIVsPrincipales = 0.65;
 
   const puntajeNaturaleza = naturalezaPuntajes[naturaleza.toLowerCase()] || 0;
   const puntajeHabilidad = habilidadPuntajes[habilidad.toLowerCase()] || 1;
