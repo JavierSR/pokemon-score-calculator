@@ -6,14 +6,14 @@ const calcularPuntajePokemon = (naturaleza, habilidad, ivsTotales, ivsPrincipale
   const naturalezaPuntajes = {
     ideal: 100,
     buena: 80,
-    neutra: 30,
-    perjudicial: 10,
+    neutra: 40,
+    perjudicial: 15,
   };
 
   const habilidadPuntajes = {
     ideal: 10,
-    util: 3,
-    inservible: 1,
+    util: 6,
+    inservible: 4,
   };
 
   const pesoIVsTotales = 0.3;
@@ -35,8 +35,41 @@ const calcularPuntajePokemon = (naturaleza, habilidad, ivsTotales, ivsPrincipale
   return Math.min(Math.round(puntajeTotal), 100);
 };
 
+const obtenerClaseTier = (ivs) => {
+  if (ivs >= 130) {
+    return 'epic'
+  }
+
+  if (ivs >= 100) {
+    return 'gold'
+  }
+
+  if (ivs < 70) {
+    return 'trash'
+  }
+
+  return ''
+}
+
+const obtenerClasePuntaje = (score) => {
+  if (score >= 80) {
+    return 'epic-score'
+  }
+
+  if (score >= 70) {
+    return 'gold-score'
+  }
+
+  if (score < 20) {
+    return 'trash-score'
+  }
+
+  return ''
+}
+
+
 const App = () => {
-  const [pokemon, setPokemon] = useState({ nombre: "", naturaleza: "ideal", habilidad: "ideal", ivsTotales: 0, ivsPrincipales: 0, notas: "" });
+  const [pokemon, setPokemon] = useState({ nombre: "", naturaleza: "Ideal", habilidad: "Ideal", ivsTotales: 0, ivsPrincipales: 0, notas: "" });
   const [listaPokemon, setListaPokemon] = useState([]);
   const [busqueda, setBusqueda] = useState("");
 
@@ -48,7 +81,6 @@ const App = () => {
 
   // Guardar en localStorage cuando se actualiza listaPokemon
   useEffect(() => {
-    console.log(listaPokemon)
     localStorage.setItem("pokemon-calculator-list", JSON.stringify(listaPokemon));
   }, [listaPokemon]);
 
@@ -71,7 +103,7 @@ const App = () => {
   const listaFiltrada = listaPokemon.filter((poke) => poke.nombre.toLowerCase().includes(busqueda.toLowerCase()));
 
   const ordenarPor = (campo) => {
-    const listaOrdenada = [...listaPokemon].sort((a, b) => (a[campo] > b[campo] ? 1 : -1));
+    const listaOrdenada = [...listaPokemon].sort((a, b) => (a[campo] < b[campo] ? 1 : -1));
     setListaPokemon(listaOrdenada);
   };
 
@@ -89,24 +121,24 @@ const App = () => {
         <div className="form-group">
           <label htmlFor="naturaleza">Naturaleza</label>
           <select id="naturaleza" name="naturaleza" value={pokemon.naturaleza} onChange={handleChange}>
-            <option value="ideal">Ideal</option>
-            <option value="buena">Buena</option>
-            <option value="neutra">Neutra</option>
-            <option value="perjudicial">Perjudicial</option>
+            <option value="Ideal">Ideal</option>
+            <option value="Buena">Buena</option>
+            <option value="Neutra">Neutra</option>
+            <option value="Perjudicial">Perjudicial</option>
           </select>
         </div>
 
         <div className="form-group">
           <label htmlFor="habilidad">Habilidad</label>
           <select id="habilidad" name="habilidad" value={pokemon.habilidad} onChange={handleChange}>
-            <option value="ideal">Ideal</option>
-            <option value="util">Útil</option>
-            <option value="inservible">Inservible</option>
+            <option value="Ideal">Ideal</option>
+            <option value="Util">Útil</option>
+            <option value="Inservible">Inservible</option>
           </select>
         </div>
 
         <div className="form-group">
-          <label htmlFor="ivsTotales">IVs Totales (Suma de los IVs de las 5 estadisticas utiles del pokemon)</label>
+          <label htmlFor="ivsTotales">IVs Totales (Suma de los IVs de las 5 estadisticas Utiles del pokemon)</label>
           <input id="ivsTotales" type="number" name="ivsTotales" value={pokemon.ivsTotales} onChange={handleChange} />
         </div>
 
@@ -146,11 +178,14 @@ const App = () => {
               <td>{poke.nombre}</td>
               <td>{poke.naturaleza}</td>
               <td>{poke.habilidad}</td>
-              <td>{poke.ivsTotales}</td>
+              <td className={obtenerClaseTier(poke.ivsTotales)}>{poke.ivsTotales}</td>
               <td>{poke.ivsPrincipales}</td>
-              <td>{poke.puntaje}</td>
+              <td className={obtenerClasePuntaje(poke.puntaje)}>{poke.puntaje}%</td>
               <td>{poke.notas}</td>
-              <td><button className="eliminar" onClick={() => eliminarPokemon(poke.nombre)}>Eliminar</button></td>
+              <td>
+                <button className="eliminar" onClick={() => eliminarPokemon(poke.nombre)}>Eliminar</button>
+                {poke.puntaje <= 16 && <div>Y RELEASE :)</div>}
+              </td>
             </tr>
           ))}
         </tbody>

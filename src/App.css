@@ -103,6 +103,41 @@ table tbody tr:nth-child(odd) {
   background-color: #ffffff;
 }
 
+table .epic-score {
+  border: solid 2px rgb(187, 45, 216);
+  color: rgb(187, 45, 216);
+  background-color: rgb(251, 230, 255);
+  font-weight: bolder;
+}
+
+table .gold-score {
+  border: solid 2px rgb(215, 212, 0);
+  background-color: rgb(255, 245, 211);
+  color: rgb(215, 212, 0);
+}
+
+table .trash-score {
+  border: solid 1px rgb(255, 58, 58);
+  color: rgb(255, 58, 58);
+  background-color: rgb(255, 178, 178);
+  font-weight: lighter;
+}
+
+
+table .epic {
+  color: rgb(121, 15, 220);
+  font-weight: bold;
+}
+
+table .gold {
+  color: rgb(209, 203, 23);
+}
+
+table .trash {
+  color: rgb(238, 51, 34);
+  font-weight: lighter;
+}
+
 /* Botón de eliminar en la tabla */
 button.eliminar {
   background-color: #d9534f;
