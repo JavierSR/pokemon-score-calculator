@@ -6,8 +6,8 @@ const calcularPuntajePokemon = (naturaleza, habilidad, ivsTotales, ivsPrincipale
   const naturalezaPuntajes = {
     ideal: 100,
     buena: 80,
-    neutra: 40,
-    perjudicial: 15,
+    neutra: 50,
+    perjudicial: 20,
   };
 
   const habilidadPuntajes = {
@@ -16,8 +16,8 @@ const calcularPuntajePokemon = (naturaleza, habilidad, ivsTotales, ivsPrincipale
     inservible: 4,
   };
 
-  const pesoIVsTotales = 0.3;
-  const pesoIVsPrincipales = 0.7;
+  const pesoIVsTotales = 0.35;
+  const pesoIVsPrincipales = 0.65;W
 
   const puntajeNaturaleza = naturalezaPuntajes[naturaleza.toLowerCase()] || 0;
   const puntajeHabilidad = habilidadPuntajes[habilidad.toLowerCase()] || 1;
@@ -30,7 +30,7 @@ const calcularPuntajePokemon = (naturaleza, habilidad, ivsTotales, ivsPrincipale
 
   const puntajeIVs = (pesoIVsTotales * proporcionIVsTotales) + (pesoIVsPrincipales * proporcionIVsPrincipales);
 
-  const puntajeTotal = puntajeNaturaleza * (puntajeHabilidad / 10) * puntajeIVs;
+  const puntajeTotal = puntajeNaturaleza * (puntajeHabilidad / 15) * puntajeIVs;
 
   return Math.min(Math.round(puntajeTotal), 100);
 };
